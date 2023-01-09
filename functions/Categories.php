@@ -1,6 +1,6 @@
 <?php
 
-include_once '../config/Database.php';
+require '../config/Database.php';
 
 class Categories extends Database {
 
@@ -52,5 +52,19 @@ class Categories extends Database {
 
         return $item->fetchAll(\PDO::FETCH_ASSOC);
     }
-}
 
+    /**
+     * insertCategory inserts a category into the database
+     *
+     * @param  string $Name the name of the category
+     * @return void
+     */
+    public function insertCategory($Name){
+        $query = "INSERT INTO $this->tableName ( Name ) VALUES ( :Name )";
+
+        $item = $this->connection->prepare($query);
+        $item->bindParam('Name', $Name, PDO::PARAM_STR);
+
+        $item->execute();
+    }
+}
