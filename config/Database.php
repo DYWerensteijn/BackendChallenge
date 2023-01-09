@@ -5,7 +5,6 @@ class Database {
     private $databaseName = "backendchallenge";
     private $username = "root";
     private $password = "";
-
     protected $connection;
 
     public function __construct()
