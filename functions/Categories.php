@@ -14,7 +14,7 @@ class Categories extends Database {
     /**
      * getAllCategories a function to get all the data from the catagories table
      *
-     * @return array return the valu of all the catagories
+     * @return array return the value of all the catagories
      */
     public function getAllCategories(){
         $query = "SELECT * FROM $this->tableName";
