@@ -4,7 +4,7 @@ include_once '../config/Database.php';
 
 class Categories extends Database {
 
-    private $tableName;
+    protected $tableName = "categories";
 
     public function __construct()
     {
