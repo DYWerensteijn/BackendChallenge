@@ -67,4 +67,21 @@ class Categories extends Database {
 
         $item->execute();
     }
+
+    /**
+     * updateCategory updates the name of category
+     *
+     * @param  string $Name the value of what the name should be
+     * @param  int $id id of the category
+     * @return void
+     */
+    public function updateCategory($Name, $id){
+        $query = "UPDATE $this->tableName SET Name = :Name WHERE id = :id";
+
+        $item = $this->connection->prepare($query);
+        $item->bindParam('Name', $Name, PDO::PARAM_STR);
+        $item->bindParam('id', $id, PDO::PARAM_INT);
+
+        $item->execute();
+    }
 }
