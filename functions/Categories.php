@@ -1,6 +1,6 @@
 <?php
 
-require '../config/Database.php';
+require './config/Database.php';
 
 class Categories extends Database {
 
@@ -80,6 +80,21 @@ class Categories extends Database {
 
         $item = $this->connection->prepare($query);
         $item->bindParam('Name', $Name, PDO::PARAM_STR);
+        $item->bindParam('id', $id, PDO::PARAM_INT);
+
+        $item->execute();
+    }
+
+    /**
+     * deleteCategory deletes category
+     *
+     * @param  int $id id of category
+     * @return void
+     */
+    public function deleteCategory($id){
+        $query = "DELETE FROM $this->tableName WHERE id = :id";
+
+        $item = $this->connection->prepare($query);
         $item->bindParam('id', $id, PDO::PARAM_INT);
 
         $item->execute();
